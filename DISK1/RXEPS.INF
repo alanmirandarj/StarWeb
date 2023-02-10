@@ -1,0 +1,97 @@
+;
+; Windows Server 2012/2016/2019/8.1/10 , PRINTER DRIVER SETUP INFORMATION FILE
+;                                Copyright(C) 2005-2021 RICOH CO.,LTD.
+;
+
+[Version]
+DriverVer=08/19/2021,1.00.0.0
+Signature="$Windows NT$"
+Provider=%PROVIDER%
+ClassGUID={4D36E979-E325-11CE-BFC1-08002BE10318}
+Class=Printer
+CatalogFile=RXEPS.cat
+DriverIsolation=2 
+
+[DestinationDirs]
+DefaultDestDir=66000
+
+[SourceDisksNames]
+1 = %DRVDSK%
+
+[SourceDisksFiles]
+RXEPS.ppd = 1
+RXEPSX.ppd = 1
+
+
+[Manufacturer]
+%RICOHSTRING%=RICOH_PROVIDER,NTx86.6.0,ntamd64,ntamd64.6.0
+
+; Model Specification Section
+[RICOH_PROVIDER]
+%RICOHMF1% = RXEPS.ppd.ntamd64, USBPRINT\RICOHP_3108E23, RICOHP_3108E23
+%RICOHMF1fx% = RXEPSX.ppd.ntamd64, USBPRINT\RICOHP_3114EE2, RICOHP_3114EE2
+
+[RICOH_PROVIDER.NTx86.6.0]
+%RICOHMF1% = RXEPS.ppd.ntamd64_NT6, USBPRINT\RRICOHP_3108E23, RICOHP_3108E23
+%RICOHMF1fx% = RXEPSX.ppd.ntamd64_NT6, USBPRINT\RICOHP_3114EE2, RICOHP_3114EE2
+
+[RICOH_PROVIDER.ntamd64]
+%RICOHMF1% = RXEPS.ppd.ntamd64, USBPRINT\RICOHP_3108E23, RICOHP_3108E23
+%RICOHMF1fx% = RXEPSX.ppd.ntamd64, USBPRINT\RICOHP_3114EE2, RICOHP_3114EE2
+
+[RICOH_PROVIDER.ntamd64.6.0]
+%RICOHMF1% = RXEPS.ppd.ntamd64_NT6, USBPRINT\RICOHP_3108E23, RICOHP_3108E23
+%RICOHMF1fx% = RXEPSX.ppd.ntamd64_NT6, USBPRINT\RICOHP_3114EE2, RICOHP_3114EE2
+
+
+; Copy File Data
+[RXEPS.ppd.ntamd64]
+CopyFiles=FileNames
+DataSection=PSCRIPT_DATA
+DataFile=RXEPS.ppd
+Include=NTPRINT.INF
+Needs=PSCRIPT_DATA,PSCRIPT.OEM
+CopyINF=GXEAS.inf
+
+
+[RXEPSX.ppd.ntamd64]
+CopyFiles=FileNames
+DataSection=PSCRIPT_DATA
+DataFile=RXEPSX.ppd
+Include=NTPRINT.INF
+Needs=PSCRIPT_DATA,PSCRIPT.OEM
+CopyINF=GXEAS.inf
+
+
+[RXEPS.ppd.ntamd64_NT6]
+CopyFiles=FileNames
+DataFile=RXEPS.ppd
+CoreDriverSections="{D20EA372-DD35-4950-9ED8-A6335AFE79F1},PSCRIPT_DATA,PSCRIPT.OEM"
+CopyINF=GXEAS.inf
+
+[RXEPSX.ppd.ntamd64_NT6]
+CopyFiles=FileNames
+DataFile=RXEPSX.ppd
+CoreDriverSections="{D20EA372-DD35-4950-9ED8-A6335AFE79F1},PSCRIPT_DATA,PSCRIPT.OEM"
+CopyINF=GXEAS.inf
+
+[PrinterPackageInstallation.x86]
+PackageAware=TRUE
+CoreDriverDependencies={D20EA372-DD35-4950-9ED8-A6335AFE79F1}
+
+[PrinterPackageInstallation.amd64]
+PackageAware=TRUE
+CoreDriverDependencies={D20EA372-DD35-4950-9ED8-A6335AFE79F1}
+
+[FileNames]
+RXEPS.ppd
+RXEPSX.ppd
+
+
+[Strings]
+PROVIDER="RICOH"
+RICOHMF1="RICOH P 310 PS"
+RICOHMF1fx="RICOH P 311 PS"
+RICOHSTRING="RICOH"
+DRVDSK="RICOH P 310/311 PS Driver"
+
